@@ -2,6 +2,7 @@ import scipy
 import numpy as np
 import pandas as pd
 import csv
+import matplotlib.pyplot as plt
 from sklearn import preprocessing, metrics
 from sklearn.cross_validation import train_test_split, cross_val_score
 from sklearn.ensemble import RandomForestClassifier
@@ -35,5 +36,8 @@ if __name__  == "__main__":
 	pca.fit(X)
 	x = pca.explained_variance_ratio_
 
+	var1 = np.cumsum(np.round(x, decimals = 4) * 100)
+	plt.plot(var1)
+	plt.show()
 
 	
