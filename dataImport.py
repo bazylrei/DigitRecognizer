@@ -7,7 +7,7 @@ from sklearn.cross_validation import train_test_split, cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.grid_search import GridSearchCV, RandomizedSearchCV
 from scipy.stats.distributions import randint
-
+from sklearn.decomposition import PCA
 
 
 if __name__  == "__main__":
@@ -18,7 +18,6 @@ if __name__  == "__main__":
 	print data.head()
 	print header
 
-		# convert the data frame to a numpy array and check the dimensionality
 	dataArray = np.array(data)
 	print dataArray.shape
 	 
@@ -29,8 +28,12 @@ if __name__  == "__main__":
 	print X.shape
 	print y.shape
 	 
-	# double check target variable values, and that the distribution is as expected
-	print y
-	 
 	yFreq = scipy.stats.itemfreq(y)
 	print yFreq
+
+	pca = PCA(n_components = 784)
+	pca.fit(X)
+	x = pca.explained_variance_ratio_
+
+
+	
