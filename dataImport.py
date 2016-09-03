@@ -40,4 +40,7 @@ if __name__  == "__main__":
 	plt.plot(var1)
 	plt.show()
 
-	
+	pca = PCA(n_components = 415)
+	pca.fit(X)
+	X_pca = pca.fit_transform(X)
+	print X_pca.shape
